@@ -12,8 +12,9 @@ spec:
       template:
         spec:
           containers:
-            - name: api-call
-              image: curlimages/curl
+            - name: {{ .Values.cronjob.image.name }}
+              image: "{{ .Values.cronjob.image.repository }}:{{ .Values.cronjob.image.tag | default "latest" }}"
+              imagePullPolicy: {{ .Values.cronjob.image.pullPolicy }}
               args:
                 - -sSv
                 - -H
