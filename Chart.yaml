@@ -10,3 +10,7 @@ sources:
 maintainers:
   - name: Basilio Vera
     email: basilio.vera@softonic.com
+keywords:
+  - prometheus
+  - exporter
+  - pagespeed
