@@ -18,7 +18,7 @@ spec:
               args:
                 - -sSv
                 - -H
-                - "X-Prometheus-ScrapeResult-Timeout-Seconds: {{ .Values.cronjob.scrapeResultTimeoutSeconds }}"
+                - "X-Prometheus-Scrape-Timeout-Seconds: {{ .Values.cronjob.scrapeTimeoutSeconds }}"
                 - "http://{{ include "pagespeed-exporter.fullname" . }}:{{ .Values.service.port }}/probe?target={{- join "&target=" .Values.exporter.targets }}"
           restartPolicy: OnFailure
 {{- end }}
