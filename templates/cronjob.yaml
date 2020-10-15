@@ -6,6 +6,7 @@ metadata:
   labels:
   {{- include "pagespeed-exporter.labels" . | nindent 4 }}
 spec:
+  concurrencyPolicy: Forbid
   schedule: {{ .Values.cronjob.schedule }}
   jobTemplate:
     spec:
