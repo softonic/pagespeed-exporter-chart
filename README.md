@@ -20,5 +20,16 @@ You need to get a valid API Key from Google from this URL: https://developers.go
 Once you have it you can use it in the chart `exporter.googleapikey`.
 On other hand you just need to provide the number of targets in `exporter.targets[]`.
 
+You can activate the metrics scraping using one of the methods below.
+
+**NOTE:** Be sure you don't activate both systems or you'll end up with more metrics than initially planned. 
+
+## Activate via ServiceMonitor
+
+If you have Prometheus Operator on your side you can activate the `serviceMonitor.enabled` flag and fine tune 
+the other default values based on your needs.
+
+## Activate via Cronjob + Prometheus Pushgateway
+
 In case you want to make this to use the Prometheus Pushgateway you just need to define the URL `exporter.pushGatewayUrl`
 and enable the cronjob with `cronjob.enabled` flag.

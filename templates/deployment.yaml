@@ -35,11 +35,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
             - "-api-key={{ .Values.exporter.googleapikey }}"
+            - "-parallel={{ .Values.exporter.parallel }}"
           {{- range $_, $target := .Values.exporter.targets }}
             - "-t={{ $target }}"
           {{- end }}
-          {{- with .Values.exporter.pushGatewayUrl }}
-            - "-pushGatewayUrl={{ . }}"
+          {{- if .Values.exporter.pushGatewayUrl }}
+            - "-pushGatewayUrl={{ .Values.exporter.pushGatewayUrl }}"
           {{- end }}
           ports:
             - name: http
