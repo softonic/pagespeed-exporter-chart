@@ -7,7 +7,7 @@ metadata:
   {{- include "pagespeed-exporter.labels" . | nindent 4 }}
 spec:
   concurrencyPolicy: Forbid
-  schedule: {{ .Values.cronjob.schedule }}
+  schedule: {{ .Values.cronjob.schedule | quote }}
   jobTemplate:
     spec:
       template:
