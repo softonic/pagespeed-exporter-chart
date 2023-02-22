@@ -67,7 +67,8 @@ tolerations: []
 affinity: {}
 
 exporter:
-  googleapikey: ""
+  googleapikey:
+    secretname: google-apikey
   pushGatewayUrl: ""
   targets: []
   parallel: false
