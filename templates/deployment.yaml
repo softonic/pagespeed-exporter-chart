@@ -29,12 +29,18 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
+          env:
+          - name: GOOGLE_APIKEY
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.exporter.googleapikey.secretname }}
+                key: apikey
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "-api-key={{ .Values.exporter.googleapikey }}"
+            - "-api-key=$GOOGLE_APIKEY"
             - "-parallel={{ .Values.exporter.parallel }}"
           {{- range $_, $target := .Values.exporter.targets }}
             - "-t={{ $target }}"
