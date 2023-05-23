@@ -2,8 +2,8 @@ apiVersion: v2
 name: pagespeed-exporter
 description: Pagespeed Exporter
 type: application
-version: 1.1.2
-appVersion: 2.1.2
+version: 1.1.3
+appVersion: 3.0.2
 icon: https://www.gstatic.com/images/icons/material/product/2x/pagespeed_64dp.png
 sources:
   - https://github.com/softonic/pagespeed-exporter-chart

@@ -72,6 +72,8 @@ exporter:
   pushGatewayUrl: ""
   targets: []
   parallel: false
+  # default categories if left empty
+  categories: ""
 
 # Enable this if you're using https://github.com/coreos/prometheus-operator
 serviceMonitor:
