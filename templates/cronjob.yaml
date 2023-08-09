@@ -21,5 +21,7 @@ spec:
                 - -H
                 - "X-Prometheus-Scrape-Timeout-Seconds: {{ .Values.cronjob.scrapeTimeoutSeconds }}"
                 - "http://{{ include "pagespeed-exporter.fullname" . }}:{{ .Values.service.port }}/probe?target={{- join "&target=" .Values.exporter.targets }}"
+              resources:
+                {{- toYaml .Values.cronjob.resources | nindent 16 }}
           restartPolicy: OnFailure
 {{- end }}
