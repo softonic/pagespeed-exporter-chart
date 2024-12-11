@@ -100,3 +100,4 @@ cronjob:
   # Execute at 3:00AM on daily basis
   schedule: "0 3 * * *"
   scrapeTimeoutSeconds: 60
+  resources: {}
