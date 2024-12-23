@@ -30,11 +30,11 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           env:
-          - name: GOOGLE_APIKEY
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.exporter.googleapikey.secretname }}
-                key: apikey
+            - name: GOOGLE_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.exporter.googleapikey.secretname }}
+                  key: apikey
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -44,6 +44,9 @@ spec:
             - "-parallel={{ .Values.exporter.parallel }}"
           {{- range $_, $target := .Values.exporter.targets }}
             - "-t={{ $target }}"
+          {{- end }}
+          {{- with .Values.exporter.categories }}
+            - "-categories={{ . }}"
           {{- end }}
           {{- if .Values.exporter.pushGatewayUrl }}
             - "-pushGatewayUrl={{ .Values.exporter.pushGatewayUrl }}"
